@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Socket.IO chat</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,6 +28,14 @@
       $('#messages').append($('<li>').text(msg));
     });
   });
+window.onload = function(){ 
+		         $.get('/text.txt', function(data) {
+		         var lines = data.toString().split("\n");
+				for(var line of lines){
+					 $('#messages').append($('<li>').text(line));
+				}	
+		         }, 'text');
+	}
 </script>
 </head>
 <body>
